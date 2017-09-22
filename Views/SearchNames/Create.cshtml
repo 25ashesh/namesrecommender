@@ -1,0 +1,89 @@
+﻿@model NamesRecommender.Models.NameDetail
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Search</h2>
+
+
+@using (Html.BeginForm("Search", "SearchNames"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.Label("Enter the starting alphabet: ", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" name="starting" class="form-control" width="100" placeholder="e.g. Vik..." />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Enter the rhyming word: ", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" name="rhyming" class="form-control" width="100" placeholder="e.g. ....ona" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Enter preferred length: ", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Length",
+                                new List<SelectListItem>
+                                {
+                                    new SelectListItem{Text="Short",Value="Short"},
+                                    new SelectListItem{Text="Medium",Value="Medium"},
+                                    new SelectListItem{Text="Long",Value="Long"}
+                                },
+                                "Choose Length",
+                                new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NameGenderId, "Enter the Gender:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Gender", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.NameGenderId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NameCategoryId, "Enter the Category:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Category", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.NameCategoryId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NameTypeId, "Enter the Type:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Type", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.NameTypeId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NameOriginId, "Enter the Origin:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Origin", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.NameOriginId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Search" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,90 @@
+﻿@model NamesRecommender.Models.NameDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NameDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.category.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.category.Category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gender.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gender.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.length.Length)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.length.Length)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.origin.Origin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.origin.Origin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.type.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.type.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NameText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Meaning)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Meaning)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NamesInfo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NamesInfo)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.stamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stamp)
+        </dd>*@
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.NameDetailId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

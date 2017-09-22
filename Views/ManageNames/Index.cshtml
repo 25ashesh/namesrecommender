@@ -1,0 +1,83 @@
+﻿@model IEnumerable<NamesRecommender.Models.NameDetail>
+@using NamesRecommender.Helpers
+@{
+    ViewBag.Title = "MangeNames@Admin";
+}
+
+<h2>Manage Names</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.category.Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gender.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.length.Length)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.origin.Origin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.type.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameText)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Meaning)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NamesInfo)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.stamp)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.category.Category)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gender.Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.length.Length)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.origin.Origin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.type.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameText)
+        </td>
+        <td>
+            @Html.Truncate(item.Meaning, 35)
+            @*@Html.DisplayFor(modelItem => item.Meaning)*@
+        </td>
+        <td>
+            @Html.Truncate(item.NamesInfo, 35)
+            @*@Html.DisplayFor(modelItem => item.NamesInfo)*@
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.stamp)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.NameDetailId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.NameDetailId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.NameDetailId })
+        </td>
+    </tr>
+}
+
+</table>

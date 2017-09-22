@@ -1,0 +1,145 @@
+﻿@model IEnumerable<NamesRecommender.Models.NameDetail>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Search Names</h2>
+
+@using (Html.BeginForm("Search", "SearchNames"))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.Label("Enter the Gender: ", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Gender",
+                                new List<SelectListItem>
+                                {
+                                    new SelectListItem{Text="Male",Value="1"},
+                                    new SelectListItem{Text="Female",Value="2"},
+                                    new SelectListItem{Text="Unisex",Value="3"}
+                                },
+                                "Select Gender",
+                                new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Enter the Origin: ", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Origin",
+                                new List<SelectListItem>
+                                {
+                                    new SelectListItem{Text="Hindu",Value="1"},
+                                    new SelectListItem{Text="Buddhist",Value="2"},
+                                    new SelectListItem{Text="Greek",Value="3"},
+                                    new SelectListItem{Text="Roman",Value="4"},
+                                    new SelectListItem{Text="Muslim",Value="5"},
+                                    new SelectListItem{Text="Arabic",Value="3"},
+                                    new SelectListItem{Text="Christian",Value="6"},
+                                    new SelectListItem{Text="African",Value="7"},
+                                },
+                                "Choose Origin",
+                                new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Enter the Category: ", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Category",
+                                new List<SelectListItem>
+                                {
+                                    new SelectListItem{Text="Modern",Value="1"},
+                                    new SelectListItem{Text="Popular",Value="2"},
+                                    new SelectListItem{Text="Rare",Value="3"},
+                                    new SelectListItem{Text="Ancient",Value="4"}
+                                },
+                                "Choose Category",
+                                new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Enter the Type: ", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Type",
+                                new List<SelectListItem>
+                                {
+                                    new SelectListItem{Text="Religious",Value="1"},
+                                    new SelectListItem{Text="Literature",Value="2"},
+                                    new SelectListItem{Text="Abstract",Value="3"},
+                                    new SelectListItem{Text="Romantic",Value="4"}
+                                },
+                                "Filter by Type",
+                                new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Enter preferred length: ", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Length",
+                                new List<SelectListItem>
+                                {
+                                    new SelectListItem{Text="Short",Value="1"},
+                                    new SelectListItem{Text="Medium",Value="2"},
+                                    new SelectListItem{Text="Long",Value="3"}
+                                },
+                                "Choose Length",
+                                new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Enter the starting alphabet: ", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" name="starting" class="form-control" width="100" placeholder="e.g. Vik..." />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("Enter the rhyming word: ", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" name="rhyming" class="form-control" width="100" placeholder="e.g. ....ona" />
+            </div>
+        </div>
+        <div style="padding-left:15em">
+            <div class="form-group">
+                <div class="col-md-3">
+                    <button type="submit" value="Search" class="btn btn-toolbar btn-info btn-lg"><span class="glyphicon" aria-hidden="true">Search</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<br />
+<div margin="auto">
+    <table class="table table-hover table-responsive" style="width:450px">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NameText)
+            </th>
+            <th style="padding-left:7em">
+                @Html.DisplayNameFor(model => model.gender.Gender)
+            </th>
+
+
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.NameText, "Details", new { id = item.NameDetailId })
+                </td>
+                <td style="padding-left:7em">
+                    @Html.DisplayFor(modelItem => item.gender.Gender)
+                </td>
+            </tr>
+
+        }
+
+    </table>
+</div>
+@*Hide this before search only show after search results*@
+@*<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
